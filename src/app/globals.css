@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes pulse-medium {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s infinite;
+}
+
+.animate-pulse-medium {
+  animation: pulse-medium 4s infinite;
+}
