@@ -2,10 +2,12 @@
 
 import Footer from '@/compoents/footer';
 import Navbar from '@/compoents/landing.page/navbar';
-import Reviews from '@/compoents/portfolio.page/reviews';
-import Link from 'next/link';
+// import Reviews from '@/compoents/portfolio.page/reviews';
+// import Link from 'next/link';
 import { JSX } from 'react';
 import Image from 'next/image';
+import CoreValues from '@/compoents/about.page/core-values';
+import BrandComponent from '@/compoents/about.page/brand';
 
 // Reusable component for the Value Cards
 const ValueCard = ({ icon, title, description, color }: { icon: JSX.Element, title: string, description: string, color: string }) => {
@@ -95,93 +97,9 @@ export default function AboutPage() {
         </section>
 
         {/* Values Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100">
-          <div className="max-w-7xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
-              Our Core <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold to-gold-dark">Values</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We believe great work comes from a great mindset. These are the principles that guide us every day.
-            </p>
-          </div>
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <ValueCard 
-              title="Creativity"
-              description="Thinking outside the box is our default setting. We love finding unique solutions to complex problems."
-              color="#50E3C2"
-              icon={
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 4a2 2 0 100 4m-3.5 12h8a2 2 0 002-2V8a2 2 0 00-2-2H8a2 2 0 00-2 2v8a2 2 0 002 2zM17.5 16h-5M17.5 8h-5M17.5 12h-5M7.5 12h5" /></svg>
-              }
-            />
-            <ValueCard 
-              title="Innovation"
-              description="We're constantly exploring new technologies to keep our work fresh and our clients ahead of the curve."
-              color="#4A90E2"
-              icon={
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L14.25 7m-1.5 10a1.5 1.5 0 01-3 0 1.5 1.5 0 013 0zm1.5-10a1.5 1.5 0 01-3 0 1.5 1.5 0 013 0zM5.5 12h13" /></svg>
-              }
-            />
-            <ValueCard 
-              title="Professionalism"
-              description="We deliver high-quality work on time, every time. Your success is our reputation."
-              color="#F5A623"
-              icon={
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c1.657 0 3 1.343 3 3v2.25c0 .328-.15.65-.45.85L12 15.55l-2.55-1.45a1.5 1.5 0 01-.45-.85V11c0-1.657 1.343-3 3-3z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 11v-.25c0-2.36 1.1-4.73 3-5.75l.4-.2a2.5 2.5 0 012.2-.1c1.2.6 1.9 1.9 1.9 3.4V11" /></svg>
-              }
-            />
-            <ValueCard 
-              title="Good Vibes"
-              description="We're doing what we love, and that energy is contagious. A positive and fun collaboration is key."
-              color="#BD10E0"
-              icon={
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              }
-            />
-          </div>
-        </section>
+<CoreValues />
+<BrandComponent />
 
-        {/* Who We Help Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
-              Who We <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Help</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our services are for anyone with a digital need. If you&are a business, we&apos;re ready to help you thrive.
-            </p>
-          </div>
-          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
-            {['Schools', 'Colleges', 'Universities', 'Charities', 'Medical Institutions', 'Financial Institutions', 'SMEs', 'E-commerce', 'Franchises', 'Fashion Brands', 'NGOs', 'Individuals'].map((item, index) => (
-              <div key={index} className="p-4 rounded-xl border border-gray-300 bg-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300">
-                <span className="text-lg font-medium text-gray-900">{item}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Reviews Section */}
-        <div className="border-t border-gray-300 my-16 max-w-7xl mx-auto"></div>
-        <div className="bg-gray-100">
-          <Reviews />
-        </div>
-        <div className="border-t border-gray-300 my-16 max-w-7xl mx-auto"></div>
-
-        {/* CTA Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-4xl mx-auto p-10 bg-white rounded-3xl border border-gray-300 shadow-xl">
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
-              Ready to create something amazing?
-            </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Let&apos;s turn your vision into a digital masterpiece. Our team is ready to get started.
-            </p>
-            <Link href="/contact" passHref>
-              <button className="bg-gradient-to-r from-gold to-gold-dark hover:from-gold-dark hover:to-gold cursor-pointer text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg">
-                Let&apos;s Talk
-              </button>
-            </Link>
-          </div>
-        </section>
       </main>
 
       <Footer />
