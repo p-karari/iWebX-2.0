@@ -34,7 +34,7 @@ const Hero = () => {
 
     // ---------- Optimized Config ----------
     const gridSize = 20;
-    const particleCount = 300;
+    const particleCount = 1000;
     const noiseScale = 0.005;
     const noiseStrength = 2;
     const repelRadius = 100;
@@ -223,7 +223,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A0A0A] to-[#1A1A1A] min-h-[85vh]">
+    <div ref={containerRef} className="relative isolate flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A0A0A] to-[#1A1A1A] min-h-[85vh]">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="w-full h-full bg-gray-900" />
