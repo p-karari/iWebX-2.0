@@ -288,7 +288,7 @@ function About() {
         .bg-gold { background-color: #D4AF37; }
         .bg-gold\\/5 { background-color: rgba(212, 175, 55, 0.05); }
         .bg-gold-dark { background-color: #B8860B; }
-        .text-gold { color: #D4AF37; }
+        
         .from-navy { --tw-gradient-from: #001F3F; --tw-gradient-to: rgba(0, 31, 63, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
         .to-navy-dark { --tw-gradient-to: #00152c; }
         .from-gold { --tw-gradient-from: #D4AF37; --tw-gradient-to: rgba(212, 175, 55, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
