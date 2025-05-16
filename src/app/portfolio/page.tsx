@@ -4,7 +4,7 @@ import Footer from "@/compoents/footer";
 // import Blog from "@/compoents/landing.page/blog";
 import Navbar from "@/compoents/landing.page/navbar";
 import Reviews from "@/compoents/portfolio.page/reviews";
-import Link from "next/link";
+// import Link from "next/link";
 import Image from "next/image";
 import CtaCard from "@/compoents/landing.page/cta.card";
 
