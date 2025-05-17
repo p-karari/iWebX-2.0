@@ -31,8 +31,8 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out font-sans 
           ${isScrolled 
-            ? 'py-2 bg-white/95 backdrop-blur-md shadow-lg border-b border-gold/20' 
-            : 'py-4 bg-white/90'
+            ? 'py-2 bg-white shadow-lg border-b border-gold/20' 
+            : 'py-4 bg-white'
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
@@ -41,12 +41,13 @@ export default function Navbar() {
             href="/" 
             className="flex items-center text-2xl font-bold text-dark transition-all duration-300 hover:scale-105 group"
           >
-            <div className="relative w-10 h-10 mr-3 bg-gradient-to-r from-[#FFD700] to-[#FFDF00] rounded-full p-1.5 group-hover:rotate-12 transition-transform">
-              <div className="w-full h-full rounded-full bg-white/20 flex items-center justify-center border border-gold/30">
-                <span className="text-dark font-black text-lg">iX</span>
+              <div className="relative w-10 h-10 mr-3 bg-gradient-to-r from-[#FFD700] to-[#FFDF00] rounded-full group-hover:rotate-12 transition-transform flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center border border-gold/30">
+                  <span className="text-dark font-black text-sm">iX</span>
+                </div>
               </div>
-            </div>
-            iWebX <span className="text-gold">Solutions</span>
+
+            iWebX Solutions
           </Link>
 
           {/* Desktop Navigation */}
@@ -96,7 +97,7 @@ export default function Navbar() {
 
           {/* Mobile Navigation */}
           <div
-            className={`fixed inset-0 bg-white/98 backdrop-blur-xl transform transition-transform duration-500 ease-in-out z-40 md:hidden pt-20
+            className={`fixed inset-0 bg-white transform transition-transform duration-500 ease-in-out z-40 md:hidden pt-20
               ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
           >
             <div className="flex flex-col items-center justify-start h-full space-y-6 text-center relative p-8">
