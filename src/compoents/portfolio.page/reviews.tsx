@@ -18,7 +18,7 @@ interface Review {
 const reviewsData: Review[] = [
   {
     id: 1,
-    user: "Alex R.",
+    user: "Alex Rudisha.",
     rating: 5,
     reviewText: "The team's work on our website was incredible. The design is sleek, the performance is flawless, and they delivered ahead of schedule. Highly recommend for any custom project!",
     likes: 21,
@@ -27,7 +27,7 @@ const reviewsData: Review[] = [
   },
   {
     id: 2,
-    user: "Sarah L.",
+    user: "Sarah Wangui.",
     rating: 5,
     reviewText: "I had a vision for a unique app, and this team brought it to life with precision and creativity. The communication was excellent throughout the process.",
     likes: 15,
@@ -36,8 +36,8 @@ const reviewsData: Review[] = [
   },
   {
     id: 3,
-    user: "John D.",
-    rating: 4,
+    user: "John Makori.",
+    rating: 5,
     reviewText: "The custom IT solution they built has streamlined our operations significantly. The support has been great, and the product is exactly what we needed. A solid choice.",
     likes: 9,
     liked: false,
@@ -45,7 +45,7 @@ const reviewsData: Review[] = [
   },
   {
     id: 4,
-    user: "Maria K.",
+    user: "Maria Simmons.",
     rating: 5,
     reviewText: "From concept to launch, they were true partners. The web application is intuitive, fast, and has received great feedback from our users. Thank you for the amazing work!",
     likes: 32,
@@ -54,7 +54,7 @@ const reviewsData: Review[] = [
   },
   {
     id: 5,
-    user: "David C.",
+    user: "David Odhiambo.",
     rating: 5,
     reviewText: "Our company's digital presence has never been stronger. The personalized approach and attention to detail made all the difference. Fantastic results!",
     likes: 25,
@@ -63,9 +63,9 @@ const reviewsData: Review[] = [
   },
   {
     id: 6,
-    user: "Jessica P.",
+    user: "Jessica Karanja.",
     rating: 5,
-    reviewText: "We hired them for a full-stack consultancy project. Their expertise and strategic advice were invaluable. The final product exceeded our expectations.",
+    reviewText: "We hired iWebX for a full-stack consultancy project. Their expertise and strategic advice were invaluable. The final product exceeded our expectations.",
     likes: 18,
     liked: false,
     avatarPlaceholderColor: "#9B59B6"
