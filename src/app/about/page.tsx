@@ -10,23 +10,23 @@ import CoreValues from '@/compoents/about.page/core-values';
 import BrandComponent from '@/compoents/about.page/brand';
 
 // Reusable component for the Value Cards
-const ValueCard = ({ icon, title, description, color }: { icon: JSX.Element, title: string, description: string, color: string }) => {
-  return (
-    <div className={`relative p-8 rounded-2xl border border-gray-800 backdrop-blur-sm bg-gray-900/50 overflow-hidden group transition-all duration-300 transform hover:-translate-y-2`}>
-      <div 
-        className={`absolute inset-0 opacity-20`} 
-        style={{ background: `radial-gradient(circle at 10% 10%, ${color}, transparent 50%)` }}
-      ></div>
-      <div className="relative z-10 flex flex-col items-center text-center">
-        <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-all duration-300">
-          {icon}
-        </div>
-        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-gray-300">{description}</p>
-      </div>
-    </div>
-  );
-};
+// const ValueCard = ({ icon, title, description, color }: { icon: JSX.Element, title: string, description: string, color: string }) => {
+//   return (
+//     <div className={`relative p-8 rounded-2xl border border-gray-800 backdrop-blur-sm bg-gray-900/50 overflow-hidden group transition-all duration-300 transform hover:-translate-y-2`}>
+//       <div 
+//         className={`absolute inset-0 opacity-20`} 
+//         style={{ background: `radial-gradient(circle at 10% 10%, ${color}, transparent 50%)` }}
+//       ></div>
+//       <div className="relative z-10 flex flex-col items-center text-center">
+//         <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-all duration-300">
+//           {icon}
+//         </div>
+//         <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+//         <p className="text-gray-300">{description}</p>
+//       </div>
+//     </div>
+//   );
+// };
 
 export default function AboutPage() {
   return (
