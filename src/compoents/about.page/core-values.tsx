@@ -6,6 +6,8 @@ export default function CoreValues() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    // Store the current value in a variable
+    const currentSectionRef = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -15,16 +17,16 @@ export default function CoreValues() {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef);
       }
     };
-  }, []);
+  }, []); // Empty dependency array means this runs once on mount
 
   const values = [
     {
