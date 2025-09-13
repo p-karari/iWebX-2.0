@@ -133,21 +133,6 @@ await emailjs.sendForm(
                     </div>
                   </div>
 
-                  {/* <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-gold/10 to-gold-light/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">Office</h3>
-                      <p className="text-gray-600">123 Tech Street</p>
-                      <p className="text-gray-600">San Francisco, CA 94103</p>
-                      <p className="text-gray-600">United States</p>
-                    </div>
-                  </div> */}
-
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-gold-light/10 to-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
                       <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -193,7 +178,7 @@ await emailjs.sendForm(
                 
                 {submitStatus === 'success' && (
                   <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6">
-                    <p>Thank you! Your message has been sent successfully.</p>
+                    <p>Thanks for reaching out! We've received your message and will get back to you as soon as we can.</p>
                   </div>
                 )}
                 
