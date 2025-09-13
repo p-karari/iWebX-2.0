@@ -3,7 +3,7 @@ import Image from 'next/image';
 
   const logos = [
     { id: 1, src: '/client-logo-1.webp', alt: "Client 1" },
-    // { id: 2, src: '/client-logo-2.jpeg', alt: "Client 2" },
+    { id: 2, src: '/client-logo-2.jpg', alt: "Client 2" },
     { id: 3, src: '/client-logo-3.jpeg', alt: "Client 3" },
     { id: 4, src: '/client-logo-4.webp', alt: "Client 4" },
     { id: 5, src: '/client-logo-5.jpeg', alt: "Client 5" },
