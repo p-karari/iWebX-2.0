@@ -11,7 +11,7 @@ const BrandComponent = () => {
             Who We <span className="text-yellow-500">Help</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our services are for anyone with a digital need. If you're a business, we're ready to help you thrive.
+            Our services are for anyone with a digital need. If you&apos;re a business, we&apos;re ready to help you thrive.
           </p>
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
@@ -38,11 +38,11 @@ const BrandComponent = () => {
             Ready to create something amazing?
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Let's turn your vision into a digital masterpiece. Our team is ready to get started.
+            Let&apos;s turn your vision into a digital masterpiece. Our team is ready to get started.
           </p>
           <Link href="/contact" passHref>
             <button className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
-              Let's Talk
+              Let&apos;s Talk
             </button>
           </Link>
         </div>
