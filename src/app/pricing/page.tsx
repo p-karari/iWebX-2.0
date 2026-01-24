@@ -3,10 +3,10 @@
 import Footer from '@/compoents/footer';
 // import Blog from '@/compoents/landing.page/blog';
 import Navbar from '@/compoents/landing.page/navbar';
-import { useState } from 'react';
+import CustomQuoteModal from '@/compoents/pricing.page/get.quote';
 import PricingModal from '@/compoents/pricing.page/PricingModal';
 import Link from 'next/link';
-import CustomQuoteModal from '@/compoents/pricing.page/get.quote';
+import { useState } from 'react';
 
 interface PricingPackage {
   title: string;
@@ -40,7 +40,7 @@ function PricingPage() {
     {
       title: "Starter Package",
       description: "Perfect for small businesses and startups",
-      price: "KSH 20,000",
+      price: "KSH 25,000",
       billing: "one-time project fee",
       popular: false,
       features: [
@@ -57,16 +57,16 @@ function PricingPage() {
     {
       title: "Business Package",
       description: "Ideal for growing businesses with more complex needs",
-      price: "KSH 35,000",
+      price: "KSH 45,000",
       billing: "one-time project fee",
       popular: true,
       features: [
-        "Up to 15-page responsive website",
+        "Up to 10-page responsive website",
         "Advanced SEO optimization",
-        "CMS integration (WordPress)",
+        "CMS integration",
         "3 rounds of revisions",
         "4-week delivery",
-        "3 months technical support",
+        "2 months technical support",
         "Basic branding package",
         "Social media integration",
         "3 installments Payment plan option"
@@ -76,7 +76,7 @@ function PricingPage() {
     {
       title: "Enterprise Package",
       description: "Complete solution for large organizations",
-      price: "KSH 75,000",
+      price: "KSH 85,000",
       billing: "one-time project fee",
       popular: false,
       features: [
@@ -85,7 +85,7 @@ function PricingPage() {
         "Custom web application features",
         "Unlimited revisions",
         "6-8 week delivery",
-        "6 months technical support",
+        "3 months technical support",
         "Complete branding package",
         "Advanced analytics integration",
         "Priority support",
