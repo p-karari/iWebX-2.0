@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useRef } from "react";
-import emailjs from '@emailjs/browser';
 import Footer from "@/compoents/footer";
 import Navbar from "@/compoents/landing.page/navbar";
+import emailjs from '@emailjs/browser';
+import { useRef, useState } from "react";
 
 function ContactPage() {
   const form = useRef<HTMLFormElement>(null);
@@ -178,7 +178,7 @@ await emailjs.sendForm(
                 
                 {submitStatus === 'success' && (
                   <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6">
-                    <p>Thanks for reaching out! We've received your message and will get back to you as soon as we can.</p>
+                    <p>Thanks for reaching out! We&apos;ve received your message and will get back to you as soon as we can.</p>
                   </div>
                 )}
                 
