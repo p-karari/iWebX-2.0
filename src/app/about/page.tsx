@@ -4,10 +4,9 @@ import Footer from '@/compoents/footer';
 import Navbar from '@/compoents/landing.page/navbar';
 // import Reviews from '@/compoents/portfolio.page/reviews';
 // import Link from 'next/link';
-import { JSX } from 'react';
-import Image from 'next/image';
-import CoreValues from '@/compoents/about.page/core-values';
 import BrandComponent from '@/compoents/about.page/brand';
+import CoreValues from '@/compoents/about.page/core-values';
+import Image from 'next/image';
 
 // Reusable component for the Value Cards
 // const ValueCard = ({ icon, title, description, color }: { icon: JSX.Element, title: string, description: string, color: string }) => {
