@@ -1,10 +1,10 @@
 'use client';
 
-import Navbar from "@/compoents/landing.page/navbar";
 import Footer from "@/compoents/footer";
+import Navbar from "@/compoents/landing.page/navbar";
 import Reviews from "@/compoents/portfolio.page/reviews";
-import { motion, Variants } from 'framer-motion';
 import Image from "next/image";
+import { useState } from "react";
 
 interface Service {
   id: number;
@@ -25,7 +25,6 @@ const services: Service[] = [
     highlight: 'Development',
     description: 'At iWebX Solutions, we empower businesses with tailored digital solutions that simplify operations, enhance user experience, and drive sustainable growth. Our tech-first approach transforms complex challenges into streamlined systems your team and clients will love.',
     imageUrl: '/custom software.jpg',
-
     altText: 'Custom Software Development',
     icon: (
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="text-white">
@@ -164,83 +163,85 @@ const services: Service[] = [
   },
 ];
 
-// Animation variants for fade-in effect on scroll
-const fadeInVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: 'easeOut',
-    },
-  },
-};
+// Component for a single service block - Always visible, no scroll animations
+const ServiceBlock = ({ service, isReversed }: { service: Service; isReversed: boolean }) => {
+  const [isHovered, setIsHovered] = useState(false);
 
-// Component for a single service block
-const ServiceBlock = ({ service, isReversed }: { service: Service; isReversed: boolean }) => (
-  <motion.div
-    variants={fadeInVariants}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.3 }}
-    className={`flex flex-col lg:flex-row ${isReversed ? 'lg:flex-row-reverse' : ''} items-center justify-between mb-20 bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg overflow-hidden`}
-  >
-    <div className="p-8 lg:p-12 lg:w-1/2">
-      <h2 className="text-3xl font-bold mb-6 text-gray-900">
-        {service.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">{service.highlight}</span>
-      </h2>
-      <p className="text-gray-700 mb-6 leading-relaxed">
-        {service.description}
-      </p>
-      
-      {/* Features List with Golden Checkmarks */}
-      <ul className="space-y-3 mb-6">
-        {service.features.map((feature, index) => (
-          <li key={index} className="flex items-start text-gray-700">
-            <svg
-              className="h-5 w-5 mr-2 mt-0.5 text-yellow-500 flex-shrink-0"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="20 6 9 17 4 12" />
+  return (
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`flex flex-col lg:flex-row ${isReversed ? 'lg:flex-row-reverse' : ''} items-center justify-between mb-20 bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500`}
+    >
+      <div className="p-8 lg:p-12 lg:w-1/2 relative">
+        {/* Gold accent line */}
+        <div className="absolute top-0 left-0 w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-tl-3xl"></div>
+        
+        <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900">
+          {service.title}{' '}
+          <span className="bg-gradient-to-r from-yellow-400 to-yellow-300 bg-clip-text text-transparent">
+            {service.highlight}
+          </span>
+        </h2>
+        
+        <p className="text-gray-700 mb-6 leading-relaxed text-lg">
+          {service.description}
+        </p>
+        
+        {/* Features List with Golden Checkmarks */}
+        <ul className="space-y-3 mb-8">
+          {service.features.map((feature, index) => (
+            <li key={index} className="flex items-start text-gray-700">
+              <svg
+                className="h-5 w-5 mr-3 mt-0.5 text-yellow-500 flex-shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span className="text-base">{feature}</span>
+            </li>
+          ))}
+        </ul>
+        
+        <button className="group relative bg-gradient-to-r from-yellow-400 to-yellow-300 text-gray-900 font-semibold py-3 px-8 rounded-full overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl">
+          {/* Shine effect */}
+          <div className="absolute inset-0 -inset-x-10 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 transform translate-x-[-150%] group-hover:translate-x-[150%] transition-all duration-700"></div>
+          <span className="relative z-10 flex items-center gap-2">
+            Get a Quote
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
-            <span className="text-base">{feature}</span>
-          </li>
-        ))}
-      </ul>
+          </span>
+        </button>
+      </div>
       
-      <button className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105">
-        Get a Quote
-      </button>
-    </div>
-    <div className="lg:w-1/2 h-96 relative">
-      <Image
-        src={service.imageUrl}
-        alt={service.altText}
-        width={400}
-        height={500}
-        className="object-cover w-full h-full"
-        onError={(e) => {
-          e.currentTarget.src = 'https://placehold.co/800x600/E5E7EB/4B5563?text=Image+Not+Found';
-          console.error(`Failed to load image at ${service.imageUrl}`);
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent flex items-end justify-center p-8">
-        <div className="text-center text-white">
-          <div className="w-24 h-24 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6">
-            {service.icon}
+      <div className="lg:w-1/2 h-[500px] relative overflow-hidden group/image">
+        <Image
+          src={service.imageUrl}
+          alt={service.altText}
+          fill
+          className="object-cover transition-transform duration-700 group-hover/image:scale-110"
+          onError={(e) => {
+            e.currentTarget.src = 'https://placehold.co/800x600/E5E7EB/4B5563?text=Image+Not+Found';
+          }}
+        />
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end justify-center p-8 transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-90'}`}>
+          <div className="text-center text-white transform transition-transform duration-500 group-hover/image:translate-y-[-10px]">
+            <div className={`w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-300 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl transition-all duration-500 ${isHovered ? 'scale-110 rotate-12' : ''}`}>
+              {service.icon}
+            </div>
+            <p className="text-white font-medium text-lg">{service.iconDescription}</p>
           </div>
-          <p className="text-white font-medium">{service.iconDescription}</p>
         </div>
       </div>
     </div>
-  </motion.div>
-);
+  );
+};
 
 export default function ServicesPage() {
   return (
@@ -251,64 +252,115 @@ export default function ServicesPage() {
           0% { background-position: 0% 0%; }
           100% { background-position: 100% 100%; }
         }
-
         .hero-bg-animated {
           animation: subtle-pan 30s linear infinite alternate;
           background-size: 200% 200%;
         }
-        
-        .gold-button:hover {
-          transform: scale(1.05);
-          box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-        }
         `}
       </style>
+      
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-16 font-sans">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-900/60"></div>
-          <div 
-            className="w-full h-full bg-cover bg-center bg-no-repeat hero-bg-animated opacity-20"
-            style={{ backgroundImage: "url('/images/contact-bg.jpg')" }}
-          ></div>
-        </div>
+      {/* Hero Section - Updated to match blog hero style */}
+      <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        {/* Background Grid Effect */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4b5563_1px,transparent_1px),linear-gradient(to_bottom,#4b5563_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
         
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="inline-flex items-center rounded-full bg-gradient-to-r from-yellow-500 to-yellow-600 px-4 py-2 mb-8 shadow-lg"
-          >
-            <span className="text-white text-sm font-medium">OUR SERVICES</span>
-          </motion.div>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold text-white mb-6"
-          >
-            Thicken up even the thinnest of margins.
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600"> The secret key to profitability</span>
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-xl text-gray-200 mb-12 max-w-2xl mx-auto leading-relaxed"
-          >
-            Discover how our tailored web solutions, expert design, and strategic digital marketing can transform your business
-          </motion.p>
+        {/* Animated gradient orbs */}
+        <div className="absolute top-0 -left-4 w-96 h-96 bg-yellow-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-yellow-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-yellow-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-yellow-400/30 rounded-full animate-float"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${8 + Math.random() * 7}s`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Decorative gold accent lines */}
+        <div className="absolute top-0 left-0 w-1/3 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+        <div className="absolute bottom-0 right-0 w-1/3 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center">
+            {/* Premium badge */}
+            <div className="flex justify-center mb-8">
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity"></div>
+                <button className="relative flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-yellow-300 text-gray-900 font-bold py-3 px-8 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                  </svg>
+                  <span>OUR SERVICES</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Main headline with animated gradient */}
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6">
+              <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 bg-clip-text text-transparent bg-300% animate-gradient">
+                Thicken up even the
+              </span>
+              <br />
+              <span className="text-white">thinnest of margins.</span>
+            </h1>
+
+            {/* Secondary headline */}
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-yellow-400 to-yellow-300 bg-clip-text text-transparent">
+                The secret key to profitability
+              </span>
+            </h2>
+
+            {/* Description */}
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Discover how our tailored web solutions, expert design, and strategic digital marketing can transform your business
+            </p>
+
+            {/* Scroll indicator */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+              <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div className="w-1 h-3 bg-yellow-400 rounded-full mt-2 animate-scroll"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16 bg-white font-sans">
+      {/* Services Section - Always visible, no scroll animations */}
+      <section className="py-24 bg-white font-sans">
         <div className="max-w-7xl mx-auto px-4">
+          {/* Section header */}
+          <div className="text-center mb-20">
+            <div className="flex justify-center mb-6">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-yellow-300 text-gray-900 font-bold py-2 px-6 rounded-full shadow-lg">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+                <span>What We Offer</span>
+              </div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Comprehensive Solutions for{' '}
+              <span className="bg-gradient-to-r from-yellow-400 to-yellow-300 bg-clip-text text-transparent">
+                Your Business
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From custom software to digital marketing, we provide end-to-end services that drive growth and innovation.
+            </p>
+          </div>
+
           {services.map((service, index) => (
             <ServiceBlock key={service.id} service={service} isReversed={index % 2 !== 0} />
           ))}
@@ -317,6 +369,48 @@ export default function ServicesPage() {
 
       <Reviews />
       <Footer />
+
+      <style>{`
+        @keyframes blob {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        .animate-float {
+          animation: float 10s infinite;
+        }
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-gradient {
+          background-size: 300% 300%;
+          animation: gradient 6s ease infinite;
+        }
+        @keyframes scroll {
+          0% { transform: translateY(0); opacity: 1; }
+          50% { transform: translateY(6px); opacity: 0.5; }
+          100% { transform: translateY(12px); opacity: 0; }
+        }
+        .animate-scroll {
+          animation: scroll 2s infinite;
+        }
+      `}</style>
     </>
   );
 }
