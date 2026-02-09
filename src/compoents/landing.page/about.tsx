@@ -84,7 +84,7 @@ function About() {
             className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
             variants={itemVariants}
           >
-            Where Vision Meets <span className="text-gold">Digital Innovation</span>
+            Where Vision Meets <span className="">Digital Innovation</span>
           </motion.h2>
           <motion.p
             className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
