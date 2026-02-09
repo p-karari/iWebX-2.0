@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { FaLightbulb, FaCode, FaSmile, FaUsers } from 'react-icons/fa';
+import { FaCode, FaLightbulb, FaSmile, FaUsers } from 'react-icons/fa';
 
 export default function CoreValues() {
   const [isVisible, setIsVisible] = useState(false);
@@ -68,7 +68,7 @@ export default function CoreValues() {
         {/* Section header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">
-            <span className="text-yellow-500">iWebX</span> Core Values
+            <span className="text-yellow-400">iWebX</span> Core Values
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             The principles that guide our innovative web experiences and make our digital playground so much fun!
