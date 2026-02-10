@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +31,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out font-sans 
           ${isScrolled 
-            ? 'py-2 bg-white shadow-lg border-b border-gold/20' 
+            ? 'py-2 bg-white  border-b border-gold/20' 
             : 'py-4 bg-white'
           }`}
       >
@@ -47,7 +47,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-            iWebX Solutions
+            iWebX Digital Solutions
           </Link>
 
           {/* Desktop Navigation */}
