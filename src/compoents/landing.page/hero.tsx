@@ -1,14 +1,4 @@
 import { useEffect, useRef } from 'react';
-import Image from 'next/image';
-
-  const logos = [
-    { id: 1, src: '/client-logo-1.webp', alt: "Client 1" },
-    { id: 2, src: '/client-logo-2.jpg', alt: "Client 2" },
-    { id: 3, src: '/client-logo-3.jpeg', alt: "Client 3" },
-    { id: 4, src: '/client-logo-4.webp', alt: "Client 4" },
-    { id: 5, src: '/client-logo-5.jpeg', alt: "Client 5" },
-    { id: 6, src: '/client-logo-6.jpeg', alt: "Client 6" },
-  ];
 
 // Define the Particle type
 type Particle = {
@@ -117,7 +107,7 @@ const Hero = () => {
           x: Math.random() * logicalWidth,
           y: Math.random() * logicalHeight,
           size: Math.random() * 1.5 + 0.5,
-          color: `rgba(255, 215, 0, ${alpha})`,
+          color: `rgba(251, 191, 36, ${alpha})`, // Yellow-400 color
           speed: Math.random() * 1.5 + 0.5,
           alpha: alpha,
         };
@@ -223,10 +213,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative isolate flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A0A0A] to-[#1A1A1A] min-h-[85vh]">
+    <div ref={containerRef} className="relative isolate flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-[600px]">
+      {/* Background Grid Effect - matching blog hero */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4b5563_1px,transparent_1px),linear-gradient(to_bottom,#4b5563_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
+      
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0 opacity-20">
-        <div className="w-full h-full bg-gray-900" />
+      <div className="absolute inset-0 z-0 opacity-10">
+        <div className="w-full h-full bg-gradient-to-br from-gray-900 to-gray-800" />
       </div>
 
       {/* Canvas for flow field particles */}
@@ -235,15 +228,52 @@ const Hero = () => {
         className="absolute inset-0 z-0 w-full h-full opacity-40"
       />
 
-      {/* Animated Gradient Orbs */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-[#FFD700]/20 to-[#FFDF00]/20 rounded-full mix-blend-soft-light filter blur-3xl animate-pulse-slow"></div>
-      <div className="absolute top-40 right-10 w-72 h-72 bg-gradient-to-br from-white/10 to-transparent rounded-full mix-blend-soft-light filter blur-3xl animate-pulse-medium"></div>
-      <div className="absolute bottom-20 left-1/4 w-72 h-72 bg-gradient-to-l from-[#FFD700]/15 to-transparent rounded-full mix-blend-soft-light filter blur-3xl animate-pulse-slow"></div>
+      {/* Animated Gradient Orbs - matching blog hero style with yellow */}
+      <div className="absolute top-0 -left-4 w-96 h-96 bg-yellow-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div className="absolute top-0 -right-4 w-96 h-96 bg-yellow-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+      <div className="absolute -bottom-8 left-20 w-96 h-96 bg-yellow-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+
+      {/* Floating particles - matching blog hero */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-yellow-400/30 rounded-full animate-float"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${8 + Math.random() * 7}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Decorative gold accent lines - matching blog hero */}
+      <div className="absolute top-0 left-0 w-1/3 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+      <div className="absolute bottom-0 right-0 w-1/3 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
 
       <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center pt-24 pb-7 md:pt-32 md:pb-36">
-        {/* Main Headline */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white leading-tight">
-          Elevate Your <span className="bg-gradient-to-r from-[#FFD700] to-[#FFDF00] bg-clip-text text-transparent">Digital Presence</span>
+        {/* Premium badge - matching blog hero style */}
+        <div className="flex justify-center mb-8">
+          <div className="group relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity"></div>
+            <button className="relative flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-yellow-300 text-gray-900 font-bold py-3 px-8 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span>Premium Solutions</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Main Headline with animated gradient */}
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 bg-clip-text text-transparent bg-300% animate-gradient">
+            Elevate Your
+          </span>
+          <br />
+          <span className="text-white">Digital Presence</span>
         </h1>
 
         {/* Subheadline */}
@@ -256,73 +286,87 @@ const Hero = () => {
           iWebX Solutions combines cutting-edge technology with elegant design to deliver digital experiences that drive growth, engagement, and measurable results for your business.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-5 md:gap-6 mb-2 md:mb-20">
+        {/* CTA Buttons with hover design */}
+        <div className="flex flex-col sm:flex-row gap-5 md:gap-6 mb-2">
+          {/* Primary Button */}
           <a href="/pricing">
-            <button className="group relative bg-gradient-to-r from-[#FFD700] to-[#D4AF37] hover:from-[#D4AF37] hover:to-[#FFD700] text-white font-semibold py-4 px-10 rounded-full overflow-hidden transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-              <span className="relative z-10 flex items-center gap-2">
+            <button className="group relative bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 rounded-full overflow-hidden transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 transform">
+              {/* Shine effect on hover */}
+              <div className="absolute inset-0 -inset-x-10 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 transform translate-x-[-150%] group-hover:translate-x-[150%] transition-all duration-1000"></div>
+              
+              <span className="relative z-10 flex items-center gap-2 text-gray-900 font-semibold py-4 px-10">
                 Start Your Project
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </a>
 
+          {/* Secondary Button */}
           <a href="/portfolio">
-            <button className="group relative bg-transparent border-2 border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700]/10 font-semibold py-4 px-10 rounded-full overflow-hidden transition-all duration-300 flex items-center gap-2">
-              <span className="relative z-10">View Our Work</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:animate-bounce" viewBox="0 0 20 20" fill="CurrentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
-              </svg>
+            <button className="group relative bg-transparent border-2 border-yellow-400 rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 transform">
+              {/* Shine effect on hover */}
+              <div className="absolute inset-0 -inset-x-10 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-150%] group-hover:translate-x-[150%] transition-all duration-1000"></div>
+              
+              <span className="relative z-10 flex items-center gap-2 text-yellow-400 hover:text-gray-900 font-semibold py-4 px-10 transition-colors duration-300 group-hover:bg-gradient-to-r group-hover:from-yellow-400 group-hover:via-yellow-300 group-hover:to-yellow-200">
+                View Our Work
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+                </svg>
+              </span>
             </button>
           </a>
         </div>
 
-        {/* Trusted by div */}
-        <div className="mb-[2px] md:mb-12">
-          <p className="text-lg font-medium text-gray-400 mb-2">Trusted by innovative companies worldwide</p>
-        </div>
-
-        {/* Logo grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 w-full max-w-5xl">
-        {logos.map((logo) => (
-          <div key={logo.id} className="flex items-center justify-center bg-white/5 rounded-xl backdrop-blur-sm border border-white/10 hover:border-[#FFD700]/30 transition-all duration-300">
-            <div className="relative w-28 h-20 opacity-70 hover:opacity-100 transition-opacity">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="animate-bounce flex flex-col items-center">
-          <span className="text-sm text-gray-400 mb-2">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-[#FFD700]/50 rounded-full flex justify-center p-1">
-            <div className="w-2 h-2 bg-[#FFD700] rounded-full animate-pulse"></div>
+        {/* Scroll indicator - matching blog hero */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-yellow-400 rounded-full mt-2 animate-scroll"></div>
           </div>
         </div>
       </div>
 
-      <style jsx global>{`
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.5; }
-          50% { opacity: 0.8; }
+      <style >{`
+        @keyframes blob {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
         }
-        @keyframes pulse-medium {
-          0%, 100% { opacity: 0.6; }
-          50% { opacity: 0.9; }
+        .animate-blob {
+          animation: blob 7s infinite;
         }
-        .animate-pulse-slow { animation: pulse-slow 6s infinite; }
-        .animate-pulse-medium { animation: pulse-medium 4s infinite; }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        .animate-float {
+          animation: float 10s infinite;
+        }
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-gradient {
+          background-size: 300% 300%;
+          animation: gradient 6s ease infinite;
+        }
+        @keyframes scroll {
+          0% { transform: translateY(0); opacity: 1; }
+          50% { transform: translateY(6px); opacity: 0.5; }
+          100% { transform: translateY(12px); opacity: 0; }
+        }
+        .animate-scroll {
+          animation: scroll 2s infinite;
+        }
       `}</style>
     </div>
   );
